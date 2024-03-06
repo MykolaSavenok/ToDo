@@ -68,11 +68,11 @@ const App: React.FC = () => {
                <div onClick={toggleTheme} className="theme">
                   {theme === 'dark' ? (
                      <>
-                        <img src="../static/images/moon.png" alt="theme" />
+                        <img src="static/images/moon.png" alt="theme" />
                      </>
                   ) : (
                      <>
-                        <img src="../static/images/sunn.png" alt="theme" />
+                        <img src="static/images/sunn.png" alt="theme" />
                      </>
                   )}</div>
                <section className="main">
@@ -107,8 +107,8 @@ const App: React.FC = () => {
                                     </>
                                  ) : (
                                     <>
-                                       <img onClick={() => editTask(index, task)} src="../static/images/edit.png" alt="edit" />
-                                       <img onClick={() => deleteTask(index)} src="../static/images/trash.png" alt="delete" />
+                                       <img onClick={() => editTask(index, task)} src="static/images/edit.png" alt="edit" />
+                                       <img onClick={() => deleteTask(index)} src="static/images/trash.png" alt="delete" />
                                     </>
                                  )}
 
