@@ -4,9 +4,11 @@
    color: #fff;
    &.dark {
       background-color: #1a202b;
+      transition: all 1s;
    }
    &.light {
-      background-color: #fff;
+      background-color: #dddada;
+      transition: all 1s;
    }
 }
 .container {
