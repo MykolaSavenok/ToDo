@@ -52,7 +52,6 @@ const App: React.FC = observer(() => {
       setTheme(theme === 'dark' ? 'light' : 'dark');
    }
 
-   console.log(todoList.tasks)
 
    return (
       <>

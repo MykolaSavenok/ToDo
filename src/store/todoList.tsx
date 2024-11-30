@@ -13,8 +13,6 @@ class TodoList {
          this.loadTasksFromLocalStorage();
       }
    
-      // Методи залишаються без змін
-   
 
       addTask(todo: string) {
          if (todo.trim()) {
