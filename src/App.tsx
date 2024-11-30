@@ -61,11 +61,11 @@ const App: React.FC = observer(() => {
                <div onClick={toggleTheme} className="theme">
                   {theme === 'dark' ? (
                      <>
-                        <img src="static/images/moon.png" alt="theme" />
+                        <img src="static/images/sunn.png" alt="theme" />
                      </>
                   ) : (
                      <>
-                        <img src="static/images/sunn.png" alt="theme" />
+                        <img src="static/images/moon.png" alt="theme" />
                      </>
                   )}
                </div>
