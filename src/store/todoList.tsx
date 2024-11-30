@@ -1,17 +1,27 @@
 import { makeAutoObservable } from "mobx";
+interface Task {
+   id: number;
+   text: string;
+}
+
 
 class TodoList {
-   tasks = [];
+      tasks: Task[] = [];
+   
+      constructor() {
+         makeAutoObservable(this);
+         this.loadTasksFromLocalStorage();
+      }
+   
+      // Методи залишаються без змін
+   
 
-   constructor() {
-      makeAutoObservable(this);
-      this.loadTasksFromLocalStorage();
-   }
-
-   addTask(todo: string) {
-      this.tasks.push({ id: Date.now(), text: todo });
-      this.saveTasksToLocalStorage();
-   }
+      addTask(todo: string) {
+         if (todo.trim()) {
+            this.tasks.push({ id: Date.now(), text: todo });
+            this.saveTasksToLocalStorage();
+         }
+      }
 
    removeTask(id: number) {
       this.tasks = this.tasks.filter(task => task.id !== id);
@@ -37,13 +47,25 @@ class TodoList {
 
    loadTasksFromLocalStorage() {
       const storedTasks = localStorage.getItem("tasks");
-      if (storedTasks !== "undefined") {
-         const parsedTasks = JSON.parse(storedTasks);
-         this.tasks = parsedTasks;
+      if (storedTasks) {
+         try {
+            const parsedTasks = JSON.parse(storedTasks);
+            if (Array.isArray(parsedTasks)) {
+               this.tasks = parsedTasks.map(task => ({
+                  id: task.id || Date.now(),
+                  text: task.text || "",
+               }));
+            } else {
+               this.tasks = [];
+            }
+         } catch (error) {
+            console.error("Помилка localStorage:", error);
+            this.tasks = [];
+         }
       } else {
          this.tasks = [];
       }
-   }
+   }   
 }
 
 export default new TodoList();
